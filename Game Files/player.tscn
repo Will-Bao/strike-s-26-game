@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://b72bvvag2rsl8"]
+
+[ext_resource type="Texture2D" uid="uid://bkirngdfqsc2c" path="res://icon.svg" id="1_4flbx"]
+[ext_resource type="Script" uid="uid://bh2n7x3b8ud4s" path="res://player.gd" id="1_onrkg"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_onrkg"]
+radius = 61.0
+height = 128.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
+size = Vector2(110, 124)
+
+[node name="Player" type="CharacterBody2D" unique_id=1407989866]
+script = ExtResource("1_onrkg")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=920259045]
+texture = ExtResource("1_4flbx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=695367149]
+shape = SubResource("CapsuleShape2D_onrkg")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1777520993]
+
+[node name="ColorRect" type="ColorRect" parent="Area2D" unique_id=200257127]
+offset_left = 64.0
+offset_top = -62.0
+offset_right = 174.0
+offset_bottom = 62.0
+color = Color(1, 0, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=899559279]
+position = Vector2(119, 0)
+shape = SubResource("RectangleShape2D_onrkg")
