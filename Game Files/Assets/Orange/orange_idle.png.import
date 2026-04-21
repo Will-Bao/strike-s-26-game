@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dl0txvoshdmin"
-path="res://.godot/imported/Will_idle.png-199530423c3bf5942deae7fdc9e69df9.ctex"
+path="res://.godot/imported/orange_idle.png-eb3d80c9921b63522e80e622422edd1f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Will/Will_idle.png"
-dest_files=["res://.godot/imported/Will_idle.png-199530423c3bf5942deae7fdc9e69df9.ctex"]
+source_file="res://Assets/Orange/orange_idle.png"
+dest_files=["res://.godot/imported/orange_idle.png-eb3d80c9921b63522e80e622422edd1f.ctex"]
 
 [params]
 

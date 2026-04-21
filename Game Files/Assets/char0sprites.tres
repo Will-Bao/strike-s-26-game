@@ -1,12 +1,12 @@
 [gd_resource type="SpriteFrames" format=3 uid="uid://c8xhaqm483fqt"]
 
-[ext_resource type="Texture2D" uid="uid://dl0txvoshdmin" path="res://Assets/Will/Will_idle.png" id="1_jrpex"]
+[ext_resource type="Texture2D" uid="uid://dl0txvoshdmin" path="res://Assets/Orange/orange_idle.png" id="1_3hjn0"]
 
 [resource]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_jrpex")
+"texture": ExtResource("1_3hjn0")
 }],
 "loop": true,
 "name": &"attack",
@@ -14,7 +14,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_jrpex")
+"texture": ExtResource("1_3hjn0")
 }],
 "loop": true,
 "name": &"idle",
@@ -22,7 +22,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_jrpex")
+"texture": ExtResource("1_3hjn0")
 }],
 "loop": true,
 "name": &"jump",
@@ -30,7 +30,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_jrpex")
+"texture": ExtResource("1_3hjn0")
 }],
 "loop": true,
 "name": &"walk",

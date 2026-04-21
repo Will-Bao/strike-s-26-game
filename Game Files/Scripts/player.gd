@@ -18,7 +18,7 @@ func _ready():
 		$Sprite.sprite_frames = load("res://Assets/char1sprites.tres")
 	else:
 		controls = player2controls
-		$Sprite.sprite_frames = load("res://Assets/charWsprites.tres")
+		$Sprite.sprite_frames = load("res://Assets/char2sprites.tres")
 
 func _physics_process(delta):
 	# Add the gravity.
