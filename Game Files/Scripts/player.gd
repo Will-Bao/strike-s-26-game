@@ -9,9 +9,14 @@ var player2controls = ["up2", "down2", "left2", "right2"]
 var controls
 var isAttacking:bool
 var state
+var speed = 100
+var knockback = Vector2.ZERO
+var inHitbox:Array[CharacterBody2D]
+var damage = 0
+var strength = 100
 
 func _ready():
-	$Area2D/ColorRect.visible = false
+	$AttackArea/AttackRect.visible = false
 	isAttacking = false
 	if player_num == 1:
 		controls = player1controls
@@ -35,27 +40,32 @@ func _physics_process(delta):
 	if direction:
 		velocity.x = direction * SPEED
 		$Sprite.flip_h = (direction == -1)
-		$Area2D.rotation = int(rad_to_deg(direction == -1)) * PI
+		$AttackArea.rotation = int(rad_to_deg(direction == -1)) * PI
 		state = "walk"
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		state = "idle"
 		
-	
+	#If the down key is pressed, run the attack function.
 	if Input.is_action_just_pressed(controls[1]):
 		attack()
-	
+	#If the player is not on the floor, set their state to "jump"
 	if not is_on_floor():
 		state = "jump"
-	
+	velocity.x = direction * SPEED + knockback.x
+	velocity.y += knockback.y
+	knockback = lerp(knockback, Vector2.ZERO, 0.1)
 	update_animation()
 	move_and_slide()
 
 func attack():
 	isAttacking = true
-	$Area2D/ColorRect.visible = true
+	$AttackArea/AttackRect.visible = true
+	for entity in inHitbox:
+		if entity.is_in_group("Players"):
+			give_knockback(entity)
 	await get_tree().create_timer(0.5).timeout
-	$Area2D/ColorRect.visible = false
+	$AttackArea/AttackRect.visible = false
 	isAttacking = false
 
 func update_animation():
@@ -68,3 +78,17 @@ func update_animation():
 		$Sprite.animation = "walk"
 	elif state == "jump" and $Sprite.animation != "jump":
 		$Sprite.animation = "jump"
+
+func give_knockback(entity):
+	entity.damage += strength
+	print(entity.damage)
+	var dir = global_position.direction_to(entity.global_position)
+	var knockback_amount = entity.damage
+	var knockback_to_give = dir * knockback_amount
+	entity.knockback = knockback_to_give
+
+func _on_attack_area_body_entered(body):
+	inHitbox.append(body)
+
+func _on_attack_area_body_exited(body):
+	inHitbox.erase(body)
