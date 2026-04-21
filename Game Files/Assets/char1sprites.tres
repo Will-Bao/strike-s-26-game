@@ -1,0 +1,41 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://bq7y4qi7i2pio"]
+
+[ext_resource type="Texture2D" uid="uid://dqxmq173qa2o7" path="res://pink_attack.png" id="1_r8hy4"]
+[ext_resource type="Texture2D" uid="uid://bp2foi0fwfvug" path="res://pink_idle.png" id="2_oabpn"]
+[ext_resource type="Texture2D" uid="uid://dkjwlfxsx4sbr" path="res://pink_jump.png" id="3_up3vp"]
+[ext_resource type="Texture2D" uid="uid://dfvusa1eoy4d8" path="res://pink_walk.png" id="4_fhf2k"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_r8hy4")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_oabpn")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_up3vp")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_fhf2k")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]

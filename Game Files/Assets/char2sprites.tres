@@ -1,0 +1,41 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://bjkspyt6dwlcb"]
+
+[ext_resource type="Texture2D" uid="uid://cdqrrwjkqx4t4" path="res://l0_sprite_4.png" id="1_psw08"]
+[ext_resource type="Texture2D" uid="uid://cbl8sl2l86ad7" path="res://l0_sprite_1.png" id="2_q1cop"]
+[ext_resource type="Texture2D" uid="uid://chc7jxm1ke3k7" path="res://l0_sprite_2.png" id="3_7fgse"]
+[ext_resource type="Texture2D" uid="uid://bpa1iaaet56f1" path="res://l0_sprite_3.png" id="4_265j4"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_psw08")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_q1cop")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_7fgse")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_265j4")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]

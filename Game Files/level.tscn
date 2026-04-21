@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://v8iyt8v1oqmp"]
+
+[ext_resource type="Texture2D" path="res://Strike_BG.png" id="1_oi3di"]
+[ext_resource type="PackedScene" uid="uid://f5s3yvnokv2" path="res://player.tscn" id="1_vonw3"]
+[ext_resource type="Texture2D" path="res://stager.png" id="3_0b4ue"]
+[ext_resource type="AudioStream" path="res://Wth.mp3" id="4_0b4ue"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0b4ue"]
+size = Vector2(998, 56)
+
+[node name="Level" type="Node2D" unique_id=1584514659]
+
+[node name="StrikeBg" type="Sprite2D" parent="." unique_id=1367678690]
+position = Vector2(578.00006, 321.00003)
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("1_oi3di")
+
+[node name="Player" parent="." unique_id=1407989866 instance=ExtResource("1_vonw3")]
+position = Vector2(296, 336)
+player_num = 1
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1754540224]
+position = Vector2(58, 69)
+scale = Vector2(0.9, 0.9)
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=956826412]
+position = Vector2(548.88885, 331.11115)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("3_0b4ue")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1129071842]
+position = Vector2(543.99994, 416.99994)
+shape = SubResource("RectangleShape2D_0b4ue")
+
+[node name="Player2" parent="." unique_id=514945089 instance=ExtResource("1_vonw3")]
+position = Vector2(790, 314)
+player_num = 2
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=409541906]
+position = Vector2(578.00006, 321.00003)
+scale = Vector2(0.65, 0.65)
+stream = ExtResource("4_0b4ue")
+autoplay = true
