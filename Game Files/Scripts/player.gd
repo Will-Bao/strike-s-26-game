@@ -15,10 +15,10 @@ func _ready():
 	isAttacking = false
 	if player_num == 1:
 		controls = player1controls
-		$Sprite.sprite_frames = load("res://char1sprites.tres")
+		$Sprite.sprite_frames = load("res://Assets/char1sprites.tres")
 	else:
 		controls = player2controls
-		$Sprite.sprite_frames = load("res://char2sprites.tres")
+		$Sprite.sprite_frames = load("res://Assets/charWsprites.tres")
 
 func _physics_process(delta):
 	# Add the gravity.

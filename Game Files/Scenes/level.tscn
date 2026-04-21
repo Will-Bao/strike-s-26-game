@@ -1,9 +1,9 @@
-[gd_scene format=3 uid="uid://v8iyt8v1oqmp"]
+[gd_scene format=3 uid="uid://u5h7cf802vi3"]
 
-[ext_resource type="Texture2D" path="res://Strike_BG.png" id="1_oi3di"]
-[ext_resource type="PackedScene" uid="uid://f5s3yvnokv2" path="res://player.tscn" id="1_vonw3"]
-[ext_resource type="Texture2D" path="res://stager.png" id="3_0b4ue"]
-[ext_resource type="AudioStream" path="res://Wth.mp3" id="4_0b4ue"]
+[ext_resource type="Texture2D" uid="uid://bsxnb834bqrwd" path="res://Strike_BG.png" id="1_oi3di"]
+[ext_resource type="PackedScene" uid="uid://b72bvvag2rsl8" path="res://player.tscn" id="1_vonw3"]
+[ext_resource type="Texture2D" uid="uid://cvbik0b3ub0si" path="res://stager.png" id="3_0b4ue"]
+[ext_resource type="AudioStream" uid="uid://3latodoabr10" path="res://Wth.mp3" id="4_0b4ue"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0b4ue"]
 size = Vector2(998, 56)

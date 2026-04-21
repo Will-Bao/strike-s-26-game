@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://1c3wdioxlhbh"
-path="res://.godot/imported/icon3.svg-338b6e56a1d0c1dc08ca1b6ffc938c56.ctex"
+uid="uid://bsxnb834bqrwd"
+path="res://.godot/imported/Strike_BG.png-88c947851ef9c496dd0a90fd0a080af7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://icon3.svg"
-dest_files=["res://.godot/imported/icon3.svg-338b6e56a1d0c1dc08ca1b6ffc938c56.ctex"]
+source_file="res://Assets/Map/Strike_BG.png"
+dest_files=["res://.godot/imported/Strike_BG.png-88c947851ef9c496dd0a90fd0a080af7.ctex"]
 
 [params]
 
@@ -38,6 +38,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false

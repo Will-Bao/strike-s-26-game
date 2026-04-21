@@ -1,9 +1,9 @@
 [gd_resource type="SpriteFrames" format=3 uid="uid://bq7y4qi7i2pio"]
 
-[ext_resource type="Texture2D" uid="uid://bd57p6wsuhmfx" path="res://icon4.svg" id="1_r8hy4"]
-[ext_resource type="Texture2D" uid="uid://bkirngdfqsc2c" path="res://icon.svg" id="2_oabpn"]
-[ext_resource type="Texture2D" uid="uid://1c3wdioxlhbh" path="res://icon3.svg" id="3_up3vp"]
-[ext_resource type="Texture2D" uid="uid://dl8yytg0pda7i" path="res://icon2.svg" id="4_fhf2k"]
+[ext_resource type="Texture2D" uid="uid://dqxmq173qa2o7" path="res://pink_attack.png" id="1_r8hy4"]
+[ext_resource type="Texture2D" uid="uid://bp2foi0fwfvug" path="res://pink_idle.png" id="2_oabpn"]
+[ext_resource type="Texture2D" uid="uid://dkjwlfxsx4sbr" path="res://pink_jump.png" id="3_up3vp"]
+[ext_resource type="Texture2D" uid="uid://dfvusa1eoy4d8" path="res://pink_walk.png" id="4_fhf2k"]
 
 [resource]
 animations = [{
