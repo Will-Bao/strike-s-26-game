@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://u5h7cf802vi3"]
 
-[ext_resource type="Texture2D" uid="uid://bsxnb834bqrwd" path="res://Strike_BG.png" id="1_oi3di"]
-[ext_resource type="PackedScene" uid="uid://b72bvvag2rsl8" path="res://player.tscn" id="1_vonw3"]
-[ext_resource type="Texture2D" uid="uid://cvbik0b3ub0si" path="res://stager.png" id="3_0b4ue"]
-[ext_resource type="AudioStream" uid="uid://3latodoabr10" path="res://Wth.mp3" id="4_0b4ue"]
+[ext_resource type="Texture2D" uid="uid://bsxnb834bqrwd" path="res://Assets/Map/Strike_BG.png" id="1_oi3di"]
+[ext_resource type="PackedScene" uid="uid://b72bvvag2rsl8" path="res://Scenes/player.tscn" id="1_vonw3"]
+[ext_resource type="Texture2D" uid="uid://cvbik0b3ub0si" path="res://Assets/Map/stager.png" id="3_0b4ue"]
+[ext_resource type="AudioStream" uid="uid://3latodoabr10" path="res://Assets/Wth.mp3" id="4_0b4ue"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0b4ue"]
 size = Vector2(998, 56)
@@ -17,7 +17,7 @@ texture = ExtResource("1_oi3di")
 
 [node name="Player" parent="." unique_id=1407989866 instance=ExtResource("1_vonw3")]
 position = Vector2(296, 336)
-player_num = 1
+char_num = 0
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1754540224]
 position = Vector2(58, 69)
@@ -35,6 +35,7 @@ shape = SubResource("RectangleShape2D_0b4ue")
 [node name="Player2" parent="." unique_id=514945089 instance=ExtResource("1_vonw3")]
 position = Vector2(790, 314)
 player_num = 2
+char_num = 0
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=409541906]
 position = Vector2(578.00006, 321.00003)
