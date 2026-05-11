@@ -9,11 +9,6 @@ var p2ready:bool = false
 func _ready():
 	pass # Replace with function body.
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
 func _input(event):
 	if event.is_action_pressed("ui_accept"):
 		if(p1ready and p2ready):
@@ -21,21 +16,33 @@ func _input(event):
 			GlobalVars.P2Char = p2Char
 			get_tree().change_scene_to_file("res://Scenes/level.tscn")
 			return
-	if event.is_action_pressed("down1"):
+	if event.is_action_pressed("dash1"):
+		p1ready = false
+		$Label.visible = false
+		return
+	if event.is_action_pressed("dash2"):
+		p2ready = false
+		$Label2.visible = false
+		return
+	if event.is_action_pressed("attack1"):
 		p1ready = true
 		$Label.visible = true
 		return
-	if event.is_action_pressed("down2"):
+	if event.is_action_pressed("attack2"):
 		p2ready = true
 		$Label2.visible = true
 		return
 	if event.is_action_pressed("right1"):
+		if p1ready: return
 		p1Char += 1
 	if event.is_action_pressed("left1"):
+		if p1ready: return
 		p1Char -= 1
 	if event.is_action_pressed("right2"):
+		if p2ready: return
 		p2Char += 1
 	if event.is_action_pressed("left2"):
+		if p2ready: return
 		p2Char -= 1
 	if p1Char > 3:
 		p1Char = 1

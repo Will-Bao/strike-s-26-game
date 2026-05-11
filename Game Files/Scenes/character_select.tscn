@@ -7,10 +7,13 @@
 [ext_resource type="Texture2D" uid="uid://bp2foi0fwfvug" path="res://Assets/Pink/pink_idle.png" id="4_72d1u"]
 [ext_resource type="Texture2D" uid="uid://cbl8sl2l86ad7" path="res://Assets/LightBlue/l0_sprite_1.png" id="5_krxhl"]
 [ext_resource type="Script" uid="uid://bwcydj52wm11k" path="res://Scenes/portrait.gd" id="5_nq02w"]
-[ext_resource type="Texture2D" uid="uid://1hgx1c7qjgjb" path="res://Assets/Blue/IMG_1575.png" id="6_72d1u"]
 [ext_resource type="Texture2D" uid="uid://donvs221kvqki" path="res://Assets/LightBlue/lightblue_selected_1.png" id="6_a4vvp"]
+[ext_resource type="Texture2D" uid="uid://be56gj44qh16e" path="res://Assets/Blue/bue_icon.png" id="6_y3dkq"]
+[ext_resource type="Texture2D" uid="uid://b5jx7iqhkowpa" path="res://Assets/Blue/blue_selected1.png" id="7_62io2"]
 [ext_resource type="Texture2D" uid="uid://d11srvnywcl35" path="res://Assets/LightBlue/lightblue_selected_2.png" id="7_se7r8"]
 [ext_resource type="Texture2D" uid="uid://d0byuypajsjqv" path="res://Assets/LightBlue/lightblue_selected_12.png" id="8_ma4qd"]
+[ext_resource type="Texture2D" uid="uid://d3qfrafjkmakq" path="res://Assets/Blue/blue_selected2.png" id="8_qgsok"]
+[ext_resource type="Texture2D" uid="uid://btb8dym36s16i" path="res://Assets/Blue/bue_selected12.png" id="9_5gpab"]
 [ext_resource type="Texture2D" uid="uid://dc8dwrimxshpo" path="res://Assets/Pink/pink_selected_1.png" id="10_nq02w"]
 [ext_resource type="Texture2D" uid="uid://c0uevvcdlticu" path="res://Assets/Pink/pink_selected_2.png" id="11_jxsgu"]
 [ext_resource type="Texture2D" uid="uid://dqg8iayf0t6sm" path="res://Assets/Pink/pink_selected_12.png" id="12_jp3rh"]
@@ -41,16 +44,16 @@ animations = [{
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("6_72d1u")
+"texture": ExtResource("6_y3dkq")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_a4vvp")
+"texture": ExtResource("7_62io2")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_se7r8")
+"texture": ExtResource("8_qgsok")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_ma4qd")
+"texture": ExtResource("9_5gpab")
 }],
 "loop": true,
 "name": &"blue",

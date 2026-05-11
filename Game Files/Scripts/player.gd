@@ -9,6 +9,7 @@ extends CharacterBody2D
 @export var DOUBLE_VELOCITY:float = -800.0
 @export var dash_ability:bool = false
 @export var dash_amount:float = 10
+@export var dash_decay:float = 0.1
 @export var player_num:int
 @export var char_num:int
 var player1controls = ["up1", "down1", "left1", "right1", "attack1", "dash1", "jump1"]
@@ -40,6 +41,7 @@ func _ready():
 		controls = player2controls
 		char_num = GlobalVars.P2Char
 	$Sprite.sprite_frames = load("res://Assets/char" + str(char_num) + "sprites.tres")
+	$AttackArea/Sprite2D.texture = load("res://Assets/Attacks/attack" + str(char_num) + ".png")
 	current_state = control_state.ACTIVE
 	gravity_active = true
 
@@ -59,7 +61,7 @@ func _physics_process(delta):
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	if dash_value > 0:
-		dash_value -= dash_amount * 0.1
+		dash_value -= dash_amount * dash_decay
 	var direction = Input.get_axis(controls[2], controls[3])
 	if direction and current_state == control_state.ACTIVE:
 		velocity.x = direction * (SPEED + dash_value)
@@ -86,12 +88,12 @@ func _physics_process(delta):
 
 func attack():
 	isAttacking = true
-	$AttackArea/AttackRect.visible = true
+	$AttackArea/Sprite2D.visible = true
 	for entity in inHitbox:
 		if entity.is_in_group("Players"):
 			give_knockback(entity)
 	await get_tree().create_timer(0.5).timeout
-	$AttackArea/AttackRect.visible = false
+	$AttackArea/Sprite2D.visible = false
 	isAttacking = false
 
 func update_animation():
@@ -109,6 +111,7 @@ func update_animation():
 
 func give_knockback(entity):
 	entity.damage += strength
+	get_tree().current_scene.get_node("BattleUi").update_damage(entity.player_num, entity.damage)
 	#print(entity.damage)
 	var dir = global_position.direction_to(entity.global_position)
 	var knockback_amount = entity.damage
@@ -132,6 +135,7 @@ func _on_knockback_cooldown_timeout():
 func KO():
 	print(name + " KOed")
 	damage = 0
+	get_tree().current_scene.get_node("BattleUi").update_damage(player_num, damage)
 	velocity = Vector2.ZERO
 	current_state = control_state.RESPAWNING
 	gravity_active = false

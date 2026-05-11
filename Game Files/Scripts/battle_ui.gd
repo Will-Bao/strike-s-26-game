@@ -30,11 +30,21 @@ func update_score(p1score, p2score):
 	$P1Score.text = "P1: " + str(p1score)
 	$P2Score.text = "P2: " + str(p2score)
 
+func update_damage(player, damage):
+	if(player == 1):
+		$P1Damage.text = str(damage)
+	else:
+		$P2Damage.text = str(damage)
+
 func stock_setup():
 	$TimeLeft.visible = false
 	$HBoxContainer.visible = true
 	$HBoxContainer2.visible = true
+	$P1Score.visible = false
+	$P2Score.visible = false
 func time_setup():
 	$TimeLeft.visible = true
 	$HBoxContainer.visible = false
 	$HBoxContainer2.visible = false
+	$P1Score.visible = true
+	$P2Score.visible = true

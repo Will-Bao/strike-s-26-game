@@ -18,6 +18,7 @@ func _ready():
 func _process(delta):
 	if(gameMode == "time"):
 		$BattleUi/TimeLeft.text = "Time Left: " + str(int(round($TimeLeft.time_left)))
+		$TimeLeft.start()
 
 func updateScore(player:int, points = 1):
 	if(gameMode == "stock"):
