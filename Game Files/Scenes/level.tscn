@@ -32,8 +32,10 @@ texture = ExtResource("1_oi3di")
 
 [node name="Player" parent="." unique_id=1407989866 instance=ExtResource("1_vonw3")]
 position = Vector2(296, 336)
+JUMP_VELOCITY = -600.0
+double_jump = true
+DOUBLE_VELOCITY = -600.0
 dash_ability = true
-dash_decay = 0.05
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1754540224]
 position = Vector2(58, 69)
@@ -50,6 +52,9 @@ shape = SubResource("RectangleShape2D_0b4ue")
 
 [node name="Player2" parent="." unique_id=514945089 instance=ExtResource("1_vonw3")]
 position = Vector2(790, 314)
+JUMP_VELOCITY = -600.0
+DOUBLE_VELOCITY = -600.0
+dash_ability = true
 player_num = 2
 char_num = 2
 

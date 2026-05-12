@@ -143,7 +143,7 @@ func KO():
 	await get_tree().create_timer(1).timeout
 	state = "respawn"
 	position = spawnPoints[randi_range(0, spawnPoints.size() - 1)]
+	gravity_active = true
 	await get_tree().create_timer(1).timeout
 	state = "idle"
 	current_state = control_state.ACTIVE
-	gravity_active = true
