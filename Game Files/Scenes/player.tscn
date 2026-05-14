@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b72bvvag2rsl8"]
 
 [ext_resource type="Script" uid="uid://bh2n7x3b8ud4s" path="res://Scripts/player.gd" id="1_onrkg"]
-[ext_resource type="SpriteFrames" uid="uid://bq7y4qi7i2pio" path="res://Assets/char1sprites.tres" id="2_cvnsp"]
+[ext_resource type="SpriteFrames" uid="uid://crd4l11djm4j4" path="res://Assets/char4sprites.tres" id="2_6t5aa"]
 [ext_resource type="Texture2D" uid="uid://dbtmjv8tblwlp" path="res://Assets/Pink/playerpink_attack.png" id="3_6t5aa"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_onrkg"]
@@ -13,15 +13,18 @@ size = Vector2(110, 124)
 
 [node name="Player" type="CharacterBody2D" unique_id=1407989866 groups=["Players"]]
 script = ExtResource("1_onrkg")
-JUMP_VELOCITY = -900.0
+JUMP_VELOCITY = -600.0
+DOUBLE_VELOCITY = -600.0
+dash_ability = true
 dash_amount = 1000.0
+dash_decay = 0.05
 player_num = 1
 char_num = 1
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1892283112]
 scale = Vector2(4, 4)
-sprite_frames = ExtResource("2_cvnsp")
-animation = &"respawn"
+sprite_frames = ExtResource("2_6t5aa")
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=695367149]
 shape = SubResource("CapsuleShape2D_onrkg")
@@ -50,6 +53,10 @@ shape = SubResource("RectangleShape2D_onrkg")
 wait_time = 0.75
 one_shot = true
 
+[node name="AttackCooldown" type="Timer" parent="." unique_id=1645819466]
+one_shot = true
+
 [connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]
 [connection signal="body_exited" from="AttackArea" to="." method="_on_attack_area_body_exited"]
 [connection signal="timeout" from="KnockbackCooldown" to="." method="_on_knockback_cooldown_timeout"]
+[connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_cooldown_timeout"]

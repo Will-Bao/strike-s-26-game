@@ -4,11 +4,11 @@ extends Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if(GlobalVars.winner == 1):
-		$Winner.frame = GlobalVars.P1Char
-		$Other.frame = GlobalVars.P2Char
+		$Winner.frame = GlobalVars.player_chars[0]
+		$Other.frame = GlobalVars.player_chars[1]
 	else:
-		$Winner.frame = GlobalVars.P2Char
-		$Other.frame = GlobalVars.P1Char
+		$Winner.frame = GlobalVars.player_chars[1]
+		$Other.frame = GlobalVars.player_chars[0]
 
 
 func _on_button_pressed():

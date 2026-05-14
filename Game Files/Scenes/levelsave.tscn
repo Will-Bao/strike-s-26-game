@@ -1,11 +1,12 @@
-[gd_scene format=3 uid="uid://u5h7cf802vi3"]
+[gd_scene format=3 uid="uid://dw4r5ox7qhk13"]
 
-[ext_resource type="Script" uid="uid://2rso8xnghkrj" path="res://Scenes/round.gd" id="1_0f350"]
-[ext_resource type="Texture2D" uid="uid://bsxnb834bqrwd" path="res://Assets/Map/Strike_BG.png" id="1_oi3di"]
-[ext_resource type="PackedScene" uid="uid://2w2juye8e4ue" path="res://Scenes/Battle_UI.tscn" id="2_8c0lf"]
-[ext_resource type="Texture2D" uid="uid://cvbik0b3ub0si" path="res://Assets/Map/stager.png" id="3_0b4ue"]
-[ext_resource type="AudioStream" uid="uid://nd08w466y0lm" path="res://Assets/Wth Extended.mp3" id="5_0f350"]
-[ext_resource type="Script" uid="uid://de121vxc25wx8" path="res://Scenes/blast_zone.gd" id="5_wqkje"]
+[ext_resource type="Script" uid="uid://2rso8xnghkrj" path="res://Scenes/round.gd" id="1_2u7yy"]
+[ext_resource type="PackedScene" uid="uid://2w2juye8e4ue" path="res://Scenes/Battle_UI.tscn" id="2_q85ex"]
+[ext_resource type="Texture2D" uid="uid://bsxnb834bqrwd" path="res://Assets/Map/Strike_BG.png" id="3_3rl1w"]
+[ext_resource type="PackedScene" uid="uid://b72bvvag2rsl8" path="res://Scenes/player.tscn" id="4_sddv1"]
+[ext_resource type="Texture2D" uid="uid://cvbik0b3ub0si" path="res://Assets/Map/stager.png" id="5_lvrfd"]
+[ext_resource type="AudioStream" uid="uid://3latodoabr10" path="res://Assets/Wth.mp3" id="6_dc8o7"]
+[ext_resource type="Script" uid="uid://de121vxc25wx8" path="res://Scenes/blast_zone.gd" id="7_x8h6w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0b4ue"]
 size = Vector2(998, 56)
@@ -17,29 +18,24 @@ size = Vector2(1588, 32)
 size = Vector2(89, 874)
 
 [node name="Level" type="Node2D" unique_id=1584514659]
-script = ExtResource("1_0f350")
+script = ExtResource("1_2u7yy")
 
-[node name="BattleUi" parent="." unique_id=744384407 instance=ExtResource("2_8c0lf")]
+[node name="BattleUi" parent="." unique_id=744384407 instance=ExtResource("2_q85ex")]
 
 [node name="SpawnPoint1" type="Node2D" parent="." unique_id=2006828312 groups=["Spawn Points"]]
 position = Vector2(580, 320)
 
-[node name="StartPoint1" type="Node2D" parent="." unique_id=1711120988 groups=["Spawn Points"]]
-position = Vector2(489, 320)
-
-[node name="StartPoint3" type="Node2D" parent="." unique_id=1431416409 groups=["Spawn Points"]]
-position = Vector2(288, 320)
-
-[node name="StartPoint2" type="Node2D" parent="." unique_id=438650378 groups=["Spawn Points"]]
-position = Vector2(675, 317)
-
-[node name="StartPoint4" type="Node2D" parent="." unique_id=1529055371 groups=["Spawn Points"]]
-position = Vector2(857, 316)
-
 [node name="StrikeBg" type="Sprite2D" parent="." unique_id=1367678690]
 position = Vector2(578.00006, 321.00003)
 scale = Vector2(0.65, 0.65)
-texture = ExtResource("1_oi3di")
+texture = ExtResource("3_3rl1w")
+
+[node name="Player" parent="." unique_id=1407989866 instance=ExtResource("4_sddv1")]
+position = Vector2(296, 336)
+JUMP_VELOCITY = -600.0
+double_jump = true
+DOUBLE_VELOCITY = -600.0
+dash_ability = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1754540224]
 position = Vector2(58, 69)
@@ -48,21 +44,29 @@ scale = Vector2(0.9, 0.9)
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=956826412]
 position = Vector2(548.88885, 331.11115)
 scale = Vector2(2.5, 2.5)
-texture = ExtResource("3_0b4ue")
+texture = ExtResource("5_lvrfd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1129071842]
 position = Vector2(543.99994, 416.99994)
 shape = SubResource("RectangleShape2D_0b4ue")
 
+[node name="Player2" parent="." unique_id=514945089 instance=ExtResource("4_sddv1")]
+position = Vector2(790, 314)
+JUMP_VELOCITY = -600.0
+DOUBLE_VELOCITY = -600.0
+dash_ability = true
+player_num = 2
+char_num = 2
+
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=409541906]
 position = Vector2(578.00006, 321.00003)
 scale = Vector2(0.65, 0.65)
-stream = ExtResource("5_0f350")
+stream = ExtResource("6_dc8o7")
 autoplay = true
 
 [node name="BlastZone" type="Area2D" parent="." unique_id=2015097956]
 position = Vector2(578.00006, 321.00003)
-script = ExtResource("5_wqkje")
+script = ExtResource("7_x8h6w")
 
 [node name="ZoneTop" type="CollisionShape2D" parent="BlastZone" unique_id=922204053]
 position = Vector2(0, -453)
@@ -84,6 +88,5 @@ shape = SubResource("RectangleShape2D_0f350")
 wait_time = 10.0
 one_shot = true
 
-[connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_audio_stream_player_2d_finished"]
 [connection signal="body_entered" from="BlastZone" to="BlastZone" method="_on_body_entered"]
 [connection signal="timeout" from="TimeLeft" to="." method="_on_time_left_timeout"]

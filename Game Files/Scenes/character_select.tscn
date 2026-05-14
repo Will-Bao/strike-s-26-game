@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bp2foi0fwfvug" path="res://Assets/Pink/pink_idle.png" id="4_72d1u"]
 [ext_resource type="Texture2D" uid="uid://cbl8sl2l86ad7" path="res://Assets/LightBlue/l0_sprite_1.png" id="5_krxhl"]
 [ext_resource type="Script" uid="uid://bwcydj52wm11k" path="res://Scenes/portrait.gd" id="5_nq02w"]
+[ext_resource type="Texture2D" uid="uid://ogyvni3njh5u" path="res://Assets/GodotGuy/gg_attack.png" id="5_sd23u"]
 [ext_resource type="Texture2D" uid="uid://donvs221kvqki" path="res://Assets/LightBlue/lightblue_selected_1.png" id="6_a4vvp"]
 [ext_resource type="Texture2D" uid="uid://be56gj44qh16e" path="res://Assets/Blue/bue_icon.png" id="6_y3dkq"]
 [ext_resource type="Texture2D" uid="uid://b5jx7iqhkowpa" path="res://Assets/Blue/blue_selected1.png" id="7_62io2"]
@@ -14,10 +15,14 @@
 [ext_resource type="Texture2D" uid="uid://d0byuypajsjqv" path="res://Assets/LightBlue/lightblue_selected_12.png" id="8_ma4qd"]
 [ext_resource type="Texture2D" uid="uid://d3qfrafjkmakq" path="res://Assets/Blue/blue_selected2.png" id="8_qgsok"]
 [ext_resource type="Texture2D" uid="uid://btb8dym36s16i" path="res://Assets/Blue/bue_selected12.png" id="9_5gpab"]
+[ext_resource type="Texture2D" uid="uid://be5ae2pso1fg3" path="res://Assets/GodotGuy/gg_idle.png" id="10_g4u2k"]
 [ext_resource type="Texture2D" uid="uid://dc8dwrimxshpo" path="res://Assets/Pink/pink_selected_1.png" id="10_nq02w"]
 [ext_resource type="Texture2D" uid="uid://c0uevvcdlticu" path="res://Assets/Pink/pink_selected_2.png" id="11_jxsgu"]
+[ext_resource type="Texture2D" uid="uid://cone0tw1micmh" path="res://Assets/GodotGuy/gg_selected_1.png" id="11_sd23u"]
+[ext_resource type="Texture2D" uid="uid://8fwtgkwglktk" path="res://Assets/GodotGuy/gg_selected_2.png" id="12_d2jfh"]
 [ext_resource type="Texture2D" uid="uid://dqg8iayf0t6sm" path="res://Assets/Pink/pink_selected_12.png" id="12_jp3rh"]
 [ext_resource type="Texture2D" uid="uid://b0u86kx4niqsn" path="res://Assets/1_select.png" id="13_y3dkq"]
+[ext_resource type="Texture2D" uid="uid://txmh3scyndap" path="res://Assets/GodotGuy/gg_selected_12.png" id="13_yaidq"]
 [ext_resource type="Script" uid="uid://b4n1lvslvuwog" path="res://Scenes/icons.gd" id="14_ma4qd"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_d1kp4"]
@@ -34,6 +39,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("3_krxhl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_sd23u")
 }],
 "loop": true,
 "name": &"default",
@@ -57,6 +65,23 @@ animations = [{
 }],
 "loop": true,
 "name": &"blue",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_g4u2k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_sd23u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_d2jfh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_yaidq")
+}],
+"loop": true,
+"name": &"gg",
 "speed": 5.0
 }, {
 "frames": [{
@@ -159,6 +184,15 @@ layout_mode = 2
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_62io2")
 animation = &"blue"
+script = ExtResource("14_ma4qd")
+
+[node name="Control4" type="Control" parent="Node/HBoxContainer" unique_id=1601390379]
+layout_mode = 2
+
+[node name="GG" type="AnimatedSprite2D" parent="Node/HBoxContainer/Control4" unique_id=866465999 groups=["icons"]]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_62io2")
+animation = &"gg"
 script = ExtResource("14_ma4qd")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1288227990]

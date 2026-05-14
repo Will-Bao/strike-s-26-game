@@ -7,6 +7,8 @@ func _ready():
 		charnum = 2
 	elif animation == "blue":
 		charnum = 3
+	elif animation == "gg":
+		charnum = 4
 	frame = 0
 	update_icon(1, 2)
 	
