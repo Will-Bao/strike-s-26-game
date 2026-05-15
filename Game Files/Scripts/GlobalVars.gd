@@ -4,10 +4,10 @@ var winner = 1
 var mode = "stock"
 var active_players = [0, 0, 0, 0]
 
-var player1controls = ["up1", "down1", "left1", "right1", "attack1", "dash1", "jump1"]
-var player2controls = ["up2", "down2", "left2", "right2", "attack2", "dash2", "jump2"]
-var player3controls = ["up3", "down3", "left3", "right3", "attack3", "dash3", "jump3"]
-var player4controls = ["up4", "down4", "left4", "right4", "attack4", "dash4", "jump4"]
+var player1controls = []
+var player2controls = []
+var player3controls = []
+var player4controls = []
 
 var controller1 = ["cup1", "cdown1", "cleft1", "cright1", "cattack1", "cdash1", "cjump1"]
 var controller2 = ["cup2", "cdown2", "cleft2", "cright2", "cattack2", "cdash2", "cjump2"]

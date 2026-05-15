@@ -124,27 +124,29 @@ func check_players(event):
 			if event.is_action_pressed(evnt):
 				GlobalVars.active_players[0] = 1
 				print("P1 active")
-				inst_icon(1)
+				#inst_icon(1)
 	if GlobalVars.active_players[1] == 0:
 		for evnt in GlobalVars.player2controls:
 			if event.is_action_pressed(evnt):
 				GlobalVars.active_players[1] = 1
 				print("P2 active")
-				inst_icon(2)
+				#inst_icon(2)
 	if GlobalVars.active_players[2] == 0:
 		for evnt in GlobalVars.player3controls:
 			if event.is_action_pressed(evnt):
 				GlobalVars.active_players[2] = 1
 				print("P3 active")
-				inst_icon(3)
+				#inst_icon(3)
 	if GlobalVars.active_players[3] == 0:
 		for evnt in GlobalVars.player4controls:
 			if event.is_action_pressed(evnt):
 				GlobalVars.active_players[3] = 1
 				print("P4 active")
-				inst_icon(4)
+				#inst_icon(4)
 
-func inst_icon(player:int):
+func init_player(player:int):
+	GlobalVars.active_players[player - 1] = 1
+	print("P" + str(player) + " active")
 	var icon = select_icon.instantiate()
 	icon.get_node("Char_Sprite").char_num = player
 	icon.name = "Char_" + str(player) + "_Sprite"
@@ -181,6 +183,38 @@ func check_controllers(event):
 					GlobalVars.p1Controller = GlobalVars.controller4
 					print("P1 assigned controller 4")
 					player1controls = controller4
+		#Keyboard Inputs
+		if not GlobalVars.player_controllers.has(11):
+			for evnt in GlobalVars.keyboard1:
+				if event.is_action_pressed(evnt):
+					GlobalVars.player_controllers[0] = 11
+					GlobalVars.p1Controller = GlobalVars.keyboard1
+					print("P1 assigned keyboard 1")
+					player1controls = GlobalVars.keyboard1
+					print(player1controls[1])
+		if not GlobalVars.player_controllers.has(12):
+			for evnt in GlobalVars.keyboard2:
+				if event.is_action_pressed(evnt):
+					GlobalVars.player_controllers[0] = 12
+					GlobalVars.p1Controller = GlobalVars.keyboard2
+					print("P1 assigned keyboard 2")
+					player1controls = GlobalVars.keyboard2
+		if not GlobalVars.player_controllers.has(13):
+			for evnt in GlobalVars.keyboard3:
+				if event.is_action_pressed(evnt):
+					GlobalVars.player_controllers[0] = 13
+					GlobalVars.p1Controller = GlobalVars.keyboard3
+					print("P1 assigned keyboard 3")
+					player1controls = GlobalVars.keyboard3
+		if not GlobalVars.player_controllers.has(14):
+			for evnt in GlobalVars.keyboard4:
+				if event.is_action_pressed(evnt):
+					GlobalVars.player_controllers[0] = 14
+					GlobalVars.p1Controller = GlobalVars.keyboard4
+					print("P1 assigned keyboard 4")
+					player1controls = GlobalVars.keyboard4
+		if not GlobalVars.player_controllers[0] == 0:
+			init_player(1)
 	
 	elif GlobalVars.player_controllers[1] == 0:
 		if not GlobalVars.player_controllers.has(1):
@@ -211,6 +245,37 @@ func check_controllers(event):
 					GlobalVars.p2Controller = GlobalVars.controller4
 					print("P2 assigned controller 4")
 					player2controls = controller4
+		#Keyboard Inputs
+		if not GlobalVars.player_controllers.has(11):
+			for evnt in GlobalVars.keyboard1:
+				if event.is_action_pressed(evnt):
+					GlobalVars.player_controllers[1] = 11
+					GlobalVars.p2Controller = GlobalVars.keyboard1
+					print("P2 assigned keyboard 1")
+					player2controls = GlobalVars.keyboard1
+		if not GlobalVars.player_controllers.has(12):
+			for evnt in GlobalVars.keyboard2:
+				if event.is_action_pressed(evnt):
+					GlobalVars.player_controllers[1] = 12
+					GlobalVars.p2Controller = GlobalVars.keyboard2
+					print("P2 assigned keyboard 2")
+					player2controls = GlobalVars.keyboard2
+		if not GlobalVars.player_controllers.has(13):
+			for evnt in GlobalVars.keyboard3:
+				if event.is_action_pressed(evnt):
+					GlobalVars.player_controllers[1] = 13
+					GlobalVars.p2Controller = GlobalVars.keyboard3
+					print("P2 assigned keyboard 3")
+					player2controls = GlobalVars.keyboard3
+		if not GlobalVars.player_controllers.has(14):
+			for evnt in GlobalVars.keyboard4:
+				if event.is_action_pressed(evnt):
+					GlobalVars.player_controllers[1] = 14
+					GlobalVars.p2Controller = GlobalVars.keyboard4
+					print("P2 assigned keyboard 4")
+					player2controls = GlobalVars.keyboard4
+		if not GlobalVars.player_controllers[1] == 0:
+			init_player(2)
 	
 	elif GlobalVars.player_controllers[2] == 0:
 		if not GlobalVars.player_controllers.has(1):
@@ -241,6 +306,37 @@ func check_controllers(event):
 					GlobalVars.p3Controller = GlobalVars.controller4
 					print("P3 assigned controller 4")
 					player3controls = controller4
+		#Keyboard Inputs
+		if not GlobalVars.player_controllers.has(11):
+			for evnt in GlobalVars.keyboard1:
+				if event.is_action_pressed(evnt):
+					GlobalVars.player_controllers[2] = 11
+					GlobalVars.p3Controller = GlobalVars.keyboard1
+					print("P3 assigned keyboard 1")
+					player3controls = GlobalVars.keyboard1
+		if not GlobalVars.player_controllers.has(12):
+			for evnt in GlobalVars.keyboard2:
+				if event.is_action_pressed(evnt):
+					GlobalVars.player_controllers[2] = 12
+					GlobalVars.p3Controller = GlobalVars.keyboard2
+					print("P3 assigned keyboard 2")
+					player3controls = GlobalVars.keyboard2
+		if not GlobalVars.player_controllers.has(13):
+			for evnt in GlobalVars.keyboard3:
+				if event.is_action_pressed(evnt):
+					GlobalVars.player_controllers[2] = 13
+					GlobalVars.p3Controller = GlobalVars.keyboard3
+					print("P3 assigned keyboard 3")
+					player3controls = GlobalVars.keyboard3
+		if not GlobalVars.player_controllers.has(14):
+			for evnt in GlobalVars.keyboard4:
+				if event.is_action_pressed(evnt):
+					GlobalVars.player_controllers[2] = 14
+					GlobalVars.p3Controller = GlobalVars.keyboard4
+					print("P3 assigned keyboard 4")
+					player3controls = GlobalVars.keyboard4
+		if not GlobalVars.player_controllers[2] == 0:
+			init_player(3)
 	
 	elif GlobalVars.player_controllers[3] == 0:
 		if not GlobalVars.player_controllers.has(1):
@@ -271,3 +367,34 @@ func check_controllers(event):
 					GlobalVars.p4Controller = GlobalVars.controller4
 					print("P4 assigned controller 4")
 					player4controls = controller4
+		#Keyboard Inputs
+		if not GlobalVars.player_controllers.has(11):
+			for evnt in GlobalVars.keyboard1:
+				if event.is_action_pressed(evnt):
+					GlobalVars.player_controllers[3] = 11
+					GlobalVars.p4Controller = GlobalVars.keyboard1
+					print("P4 assigned keyboard 1")
+					player4controls = GlobalVars.keyboard1
+		if not GlobalVars.player_controllers.has(12):
+			for evnt in GlobalVars.keyboard2:
+				if event.is_action_pressed(evnt):
+					GlobalVars.player_controllers[3] = 12
+					GlobalVars.p4Controller = GlobalVars.keyboard2
+					print("P4 assigned keyboard 2")
+					player4controls = GlobalVars.keyboard2
+		if not GlobalVars.player_controllers.has(13):
+			for evnt in GlobalVars.keyboard3:
+				if event.is_action_pressed(evnt):
+					GlobalVars.player_controllers[3] = 13
+					GlobalVars.p4Controller = GlobalVars.keyboard3
+					print("P4 assigned keyboard 3")
+					player4controls = GlobalVars.keyboard3
+		if not GlobalVars.player_controllers.has(14):
+			for evnt in GlobalVars.keyboard4:
+				if event.is_action_pressed(evnt):
+					GlobalVars.player_controllers[3] = 14
+					GlobalVars.p4Controller = GlobalVars.keyboard4
+					print("P4 assigned keyboard 4")
+					player4controls = GlobalVars.keyboard4
+		if not GlobalVars.player_controllers[3] == 0:
+			init_player(4)
