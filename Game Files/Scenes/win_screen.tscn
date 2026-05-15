@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dqxmq173qa2o7" path="res://Assets/Pink/pink_attack.png" id="2_85imr"]
 [ext_resource type="Texture2D" uid="uid://bpa1iaaet56f1" path="res://Assets/LightBlue/l0_sprite_3.png" id="3_mf36t"]
 [ext_resource type="Texture2D" uid="uid://bduvq72tvcdew" path="res://Assets/Blue/IMG_1576.png" id="4_pq638"]
+[ext_resource type="Texture2D" uid="uid://be5ae2pso1fg3" path="res://Assets/GodotGuy/gg_idle.png" id="5_85imr"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_luvg0"]
 animations = [{
@@ -19,6 +20,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("4_pq638")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_85imr")
 }],
 "loop": true,
 "name": &"default",
@@ -48,6 +52,19 @@ sprite_frames = SubResource("SpriteFrames_luvg0")
 position = Vector2(1088, 582)
 scale = Vector2(-3, 3)
 sprite_frames = SubResource("SpriteFrames_luvg0")
+frame = 1
+
+[node name="Other2" type="AnimatedSprite2D" parent="." unique_id=1776608238]
+position = Vector2(979, 582)
+scale = Vector2(-3, 3)
+sprite_frames = SubResource("SpriteFrames_luvg0")
+frame = 1
+
+[node name="Other3" type="AnimatedSprite2D" parent="." unique_id=854565226]
+position = Vector2(874, 582)
+scale = Vector2(-3, 3)
+sprite_frames = SubResource("SpriteFrames_luvg0")
+frame = 1
 
 [node name="Button" type="Button" parent="." unique_id=1128348537]
 offset_left = 831.0
