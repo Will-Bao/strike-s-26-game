@@ -263,6 +263,62 @@ cjump2={
 "events": [Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":1,"button_index":0,"pressure":0.0,"pressed":true,"script":null)
 ]
 }
+cup3={
+"deadzone": 0.2,
+"events": []
+}
+cdown3={
+"deadzone": 0.2,
+"events": []
+}
+cleft3={
+"deadzone": 0.2,
+"events": []
+}
+cright3={
+"deadzone": 0.2,
+"events": []
+}
+cattack3={
+"deadzone": 0.2,
+"events": []
+}
+cdash3={
+"deadzone": 0.2,
+"events": []
+}
+cjump3={
+"deadzone": 0.2,
+"events": []
+}
+cup4={
+"deadzone": 0.2,
+"events": []
+}
+cdown4={
+"deadzone": 0.2,
+"events": []
+}
+cleft4={
+"deadzone": 0.2,
+"events": []
+}
+cright4={
+"deadzone": 0.2,
+"events": []
+}
+cattack4={
+"deadzone": 0.2,
+"events": []
+}
+cdash4={
+"deadzone": 0.2,
+"events": []
+}
+cjump4={
+"deadzone": 0.2,
+"events": []
+}
 
 [physics]
 

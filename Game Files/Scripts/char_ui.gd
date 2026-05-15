@@ -13,7 +13,7 @@ func _ready():
 		$HBoxContainer.visible = false
 
 func initialize(player):
-	$Icon.frame = player
+	$Icon.frame = GlobalVars.player_chars[player]
 
 func update_stock(stock):
 	for i in stock_icons.size():

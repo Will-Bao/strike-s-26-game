@@ -21,15 +21,8 @@ offset_bottom = 648.0
 color = Color(0, 0.24047005, 0.29415745, 1)
 
 [node name="Chars_container" type="HBoxContainer" parent="." unique_id=1525150996]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = 333.0
-offset_top = 87.0
-offset_right = 333.0
-offset_bottom = 87.0
-grow_horizontal = 2
-theme_override_constants/separation = 250
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="Node" type="Node" parent="." unique_id=448761570]
 

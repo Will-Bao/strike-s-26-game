@@ -43,16 +43,16 @@ func _ready():
 	$AttackArea/AttackRect.visible = false
 	isAttacking = false
 	if player_num == 1:
-		controls = player1controls
+		controls = GlobalVars.player1controls
 		char_num = GlobalVars.player_chars[0]
 	elif player_num == 3:
-		controls = player3controls
+		controls = GlobalVars.player3controls
 		char_num = GlobalVars.player_chars[2]
 	elif player_num == 4:
-		controls = player4controls
+		controls = GlobalVars.player4controls
 		char_num = GlobalVars.player_chars[3]
 	else:
-		controls = player2controls
+		controls = GlobalVars.player2controls
 		char_num = GlobalVars.player_chars[1]
 	if is_computer_player:
 		controls = playerCcontrols

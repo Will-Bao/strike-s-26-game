@@ -9,7 +9,7 @@ func _ready():
 	for i in range(4):
 		if GlobalVars.active_players[i] > 0:
 			var icon = icon_scene.instantiate()
-			icon.initialize(i + 1)
+			icon.initialize(i)
 			icon.name = "player_icon" + str(i + 1)
 			player_icons.append(icon)
 			$Player_Icons.add_child(icon)
