@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PlayerData" format=3 uid="uid://c13k1i1m6f6y3"]
+
+[ext_resource type="Texture2D" uid="uid://cnmt4t4acc0vo" path="res://assets/art/attacks/attack1.png" id="1_cjohu"]
+[ext_resource type="Script" uid="uid://dquxlkkcc3apr" path="res://data/player_stats.gd" id="1_dystc"]
+[ext_resource type="SpriteFrames" uid="uid://bq7y4qi7i2pio" path="res://data/sprites/char1sprites.tres" id="3_a0rky"]
+
+[resource]
+script = ExtResource("1_dystc")
+sprite_frames = ExtResource("3_a0rky")
+attack_texture = ExtResource("1_cjohu")
+metadata/_custom_type_script = "uid://dquxlkkcc3apr"
