@@ -1,0 +1,185 @@
+[gd_scene format=3 uid="uid://c6eoph4k0evk6"]
+
+[ext_resource type="Script" uid="uid://bb85p30myqvq1" path="res://scenes/character_select/character_select.gd" id="1_pn6bq"]
+[ext_resource type="Texture2D" uid="uid://dqxmq173qa2o7" path="res://assets/art/players/pink/pink_attack.png" id="2_rco18"]
+[ext_resource type="Texture2D" uid="uid://bpa1iaaet56f1" path="res://assets/art/players/light_blue/l0_sprite_3.png" id="3_6o8nq"]
+[ext_resource type="Texture2D" uid="uid://bduvq72tvcdew" path="res://assets/art/players/blue/IMG_1576.png" id="4_uosnp"]
+[ext_resource type="Script" uid="uid://bwcydj52wm11k" path="res://scenes/character_select/portrait.gd" id="5_h5lvv"]
+[ext_resource type="Texture2D" uid="uid://be56gj44qh16e" path="res://assets/art/players/blue/bue_icon.png" id="6_bhxyi"]
+[ext_resource type="Texture2D" uid="uid://b5jx7iqhkowpa" path="res://assets/art/players/blue/blue_selected1.png" id="7_unsjf"]
+[ext_resource type="Texture2D" uid="uid://d3qfrafjkmakq" path="res://assets/art/players/blue/blue_selected2.png" id="8_dcv2j"]
+[ext_resource type="Texture2D" uid="uid://btb8dym36s16i" path="res://assets/art/players/blue/bue_selected12.png" id="9_7qrtg"]
+[ext_resource type="Texture2D" uid="uid://cbl8sl2l86ad7" path="res://assets/art/players/light_blue/l0_sprite_1.png" id="10_i2o6f"]
+[ext_resource type="Texture2D" uid="uid://donvs221kvqki" path="res://assets/art/players/light_blue/lightblue_selected_1.png" id="11_0ssei"]
+[ext_resource type="Texture2D" uid="uid://d11srvnywcl35" path="res://assets/art/players/light_blue/lightblue_selected_2.png" id="12_blboq"]
+[ext_resource type="Texture2D" uid="uid://d0byuypajsjqv" path="res://assets/art/players/light_blue/lightblue_selected_12.png" id="13_58w0o"]
+[ext_resource type="Texture2D" uid="uid://bp2foi0fwfvug" path="res://assets/art/players/pink/pink_idle.png" id="14_ylngg"]
+[ext_resource type="Texture2D" uid="uid://dc8dwrimxshpo" path="res://assets/art/players/pink/pink_selected_1.png" id="15_l4mtg"]
+[ext_resource type="Texture2D" uid="uid://c0uevvcdlticu" path="res://assets/art/players/pink/pink_selected_2.png" id="16_w6ymg"]
+[ext_resource type="Texture2D" uid="uid://dqg8iayf0t6sm" path="res://assets/art/players/pink/pink_selected_12.png" id="17_vkyly"]
+[ext_resource type="Script" uid="uid://b4n1lvslvuwog" path="res://scenes/character_select/icons.gd" id="18_jqq02"]
+[ext_resource type="Texture2D" uid="uid://b0u86kx4niqsn" path="res://assets/art/ui/1_select.png" id="19_kxi8j"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d1kp4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_rco18")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_6o8nq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_uosnp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_62io2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_bhxyi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_unsjf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_dcv2j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_7qrtg")
+}],
+"loop": true,
+"name": &"blue",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_i2o6f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_0ssei")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_blboq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_58w0o")
+}],
+"loop": true,
+"name": &"lightblue",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_ylngg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_l4mtg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_w6ymg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_vkyly")
+}],
+"loop": true,
+"name": &"pink",
+"speed": 5.0
+}]
+
+[node name="CharacterSelect" type="Node2D" unique_id=1808200874]
+texture_filter = 1
+script = ExtResource("1_pn6bq")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1733140329]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0.24047005, 0.29415745, 1)
+
+[node name="P1Char" type="AnimatedSprite2D" parent="." unique_id=2075258297 groups=["icons"]]
+position = Vector2(250, 250)
+scale = Vector2(10, 10)
+sprite_frames = SubResource("SpriteFrames_d1kp4")
+frame = 1
+frame_progress = 0.8259949
+script = ExtResource("5_h5lvv")
+isP1 = true
+
+[node name="P2Char" type="AnimatedSprite2D" parent="." unique_id=1514021775 groups=["icons"]]
+position = Vector2(910, 250)
+scale = Vector2(-10, 10)
+sprite_frames = SubResource("SpriteFrames_d1kp4")
+frame = 1
+frame_progress = 0.8259949
+script = ExtResource("5_h5lvv")
+
+[node name="Node" type="Node" parent="." unique_id=448761570]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Node" unique_id=2118076047]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -50.0
+offset_top = -40.0
+offset_right = 50.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 75
+
+[node name="Control" type="Control" parent="Node/HBoxContainer" unique_id=1586819068]
+layout_mode = 2
+
+[node name="Pink" type="AnimatedSprite2D" parent="Node/HBoxContainer/Control" unique_id=1279113151 groups=["icons"]]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_62io2")
+animation = &"pink"
+script = ExtResource("18_jqq02")
+
+[node name="Control2" type="Control" parent="Node/HBoxContainer" unique_id=1935457283]
+layout_mode = 2
+
+[node name="LightBlue" type="AnimatedSprite2D" parent="Node/HBoxContainer/Control2" unique_id=1442386378 groups=["icons"]]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_62io2")
+animation = &"lightblue"
+script = ExtResource("18_jqq02")
+
+[node name="Control3" type="Control" parent="Node/HBoxContainer" unique_id=1199683892]
+layout_mode = 2
+
+[node name="Blue" type="AnimatedSprite2D" parent="Node/HBoxContainer/Control3" unique_id=1377436738 groups=["icons"]]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_62io2")
+animation = &"blue"
+script = ExtResource("18_jqq02")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1288227990]
+scale = Vector2(2, 2)
+texture = ExtResource("19_kxi8j")
+
+[node name="Label" type="Label" parent="." unique_id=1136362541]
+visible = false
+offset_left = 159.0
+offset_top = 425.0
+offset_right = 332.0
+offset_bottom = 494.0
+theme_override_font_sizes/font_size = 50
+text = "READY!"
+
+[node name="Label2" type="Label" parent="." unique_id=819406500]
+visible = false
+offset_left = 830.0
+offset_top = 419.0
+offset_right = 1003.0
+offset_bottom = 488.0
+theme_override_font_sizes/font_size = 50
+text = "READY!"

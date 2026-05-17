@@ -1,0 +1,148 @@
+[gd_scene format=3 uid="uid://2w2juye8e4ue"]
+
+[ext_resource type="Script" uid="uid://c8a8t4ii8gyvi" path="res://scenes/ui/battle_ui.gd" id="1_cec2i"]
+[ext_resource type="Texture2D" uid="uid://c7yjwrl6yya7p" path="res://assets/art/ui/LivesContainers.png" id="2_hjma3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p5pks"]
+atlas = ExtResource("2_hjma3")
+region = Rect2(17, 0, 17, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1agyt"]
+atlas = ExtResource("2_hjma3")
+region = Rect2(0, 0, 17, 18)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3kkeu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p5pks")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1agyt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="BattleUi" type="Node" unique_id=744384407]
+script = ExtResource("1_cec2i")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1664851523]
+offset_right = 100.0
+offset_bottom = 40.0
+theme_override_constants/separation = 50
+
+[node name="Control" type="Control" parent="HBoxContainer" unique_id=2084083188]
+layout_mode = 2
+
+[node name="Heart1" type="AnimatedSprite2D" parent="HBoxContainer/Control" unique_id=865078414]
+position = Vector2(25, 25)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_3kkeu")
+
+[node name="Control2" type="Control" parent="HBoxContainer" unique_id=825977059]
+layout_mode = 2
+
+[node name="Heart2" type="AnimatedSprite2D" parent="HBoxContainer/Control2" unique_id=1939001962]
+position = Vector2(25, 25)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_3kkeu")
+
+[node name="Control3" type="Control" parent="HBoxContainer" unique_id=1729301149]
+layout_mode = 2
+
+[node name="Heart3" type="AnimatedSprite2D" parent="HBoxContainer/Control3" unique_id=594295449]
+position = Vector2(25, 25)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_3kkeu")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="." unique_id=2004911279]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -152.0
+grow_horizontal = 0
+theme_override_constants/separation = 50
+
+[node name="Control" type="Control" parent="HBoxContainer2" unique_id=716881114]
+layout_mode = 2
+
+[node name="Heart3" type="AnimatedSprite2D" parent="HBoxContainer2/Control" unique_id=951398420]
+position = Vector2(25, 25)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_3kkeu")
+
+[node name="Control2" type="Control" parent="HBoxContainer2" unique_id=1284048854]
+layout_mode = 2
+
+[node name="Heart2" type="AnimatedSprite2D" parent="HBoxContainer2/Control2" unique_id=1686786200]
+position = Vector2(25, 25)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_3kkeu")
+
+[node name="Control3" type="Control" parent="HBoxContainer2" unique_id=1269889543]
+layout_mode = 2
+
+[node name="Heart1" type="AnimatedSprite2D" parent="HBoxContainer2/Control3" unique_id=643115198]
+position = Vector2(25, 25)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_3kkeu")
+
+[node name="Label" type="Label" parent="." unique_id=1037615092]
+visible = false
+offset_left = 402.0
+offset_top = 226.0
+offset_right = 689.0
+offset_bottom = 363.0
+theme_override_font_sizes/font_size = 100
+text = "GAME"
+
+[node name="TimeLeft" type="Label" parent="." unique_id=61926365]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -50.0
+offset_right = 50.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "Time Left: 60"
+
+[node name="P1Score" type="Label" parent="." unique_id=1043177185]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 50
+text = "0"
+
+[node name="P2Score" type="Label" parent="." unique_id=389711548]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 23.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 50
+text = "0"
+
+[node name="P1Damage" type="Label" parent="." unique_id=1297881656]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -69.0
+offset_right = 40.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 50
+text = "0"
+
+[node name="P2Damage" type="Label" parent="." unique_id=1156911509]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -69.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 50
+text = "0"
