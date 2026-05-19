@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://dw4r5ox7qhk13"]
 
+<<<<<<<< HEAD:Game Files/scenes/world/levelsave.tscn
 [ext_resource type="Script" uid="uid://2rso8xnghkrj" path="res://scenes/world/round.gd" id="1_2u7yy"]
 [ext_resource type="PackedScene" uid="uid://2w2juye8e4ue" path="res://scenes/ui/Battle_UI.tscn" id="2_q85ex"]
 [ext_resource type="Texture2D" uid="uid://bsxnb834bqrwd" path="res://assets/art/map/Strike_BG.png" id="3_3rl1w"]
@@ -7,6 +8,15 @@
 [ext_resource type="Texture2D" uid="uid://cvbik0b3ub0si" path="res://assets/art/map/stager.png" id="5_lvrfd"]
 [ext_resource type="AudioStream" uid="uid://3latodoabr10" path="res://assets/music/Wth.mp3" id="6_dc8o7"]
 [ext_resource type="Script" uid="uid://de121vxc25wx8" path="res://scenes/player/blast_zone.gd" id="7_x8h6w"]
+========
+[ext_resource type="Script" uid="uid://2rso8xnghkrj" path="res://scenes/world/round.gd" id="1_0f350"]
+[ext_resource type="Texture2D" uid="uid://bsxnb834bqrwd" path="res://assets/art/map/Strike_BG.png" id="1_oi3di"]
+[ext_resource type="PackedScene" uid="uid://b72bvvag2rsl8" path="res://scenes/player/player.tscn" id="1_vonw3"]
+[ext_resource type="PackedScene" uid="uid://2w2juye8e4ue" path="res://scenes/ui/Battle_UI.tscn" id="2_8c0lf"]
+[ext_resource type="Texture2D" uid="uid://cvbik0b3ub0si" path="res://assets/art/map/stager.png" id="3_0b4ue"]
+[ext_resource type="AudioStream" uid="uid://3latodoabr10" path="res://assets/music/Wth.mp3" id="4_0b4ue"]
+[ext_resource type="Script" uid="uid://de121vxc25wx8" path="res://scenes/player/blast_zone.gd" id="5_wqkje"]
+>>>>>>>> main:Game Files/scenes/world/level.tscn
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0b4ue"]
 size = Vector2(998, 56)

@@ -50,7 +50,7 @@ func gameEnd(winner):
 	$BattleUi/Label.visible = true
 	await get_tree().create_timer(0.5).timeout
 	Engine.set_time_scale(1.0)
-	get_tree().change_scene_to_file("res://Scenes/win_screen.tscn")
+	SceneManager.change_scene("win")
 	
 
 

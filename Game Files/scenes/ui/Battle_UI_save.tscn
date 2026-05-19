@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://bqa0lij3jbtyu"]
 
+<<<<<<<< HEAD:Game Files/scenes/ui/Battle_UI_save.tscn
 [ext_resource type="Script" uid="uid://c8a8t4ii8gyvi" path="res://scenes/ui/battle_ui.gd" id="1_stps0"]
 [ext_resource type="Texture2D" uid="uid://c7yjwrl6yya7p" path="res://assets/art/ui/LivesContainers.png" id="2_dl1wa"]
 [ext_resource type="PackedScene" uid="uid://d2n71p12wyjaf" path="res://scenes/ui/Char_UI.tscn" id="3_qljtq"]
@@ -10,6 +11,17 @@ region = Rect2(17, 0, 17, 18)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1agyt"]
 atlas = ExtResource("2_dl1wa")
+========
+[ext_resource type="Script" uid="uid://c8a8t4ii8gyvi" path="res://scenes/ui/battle_ui.gd" id="1_cec2i"]
+[ext_resource type="Texture2D" uid="uid://c7yjwrl6yya7p" path="res://assets/art/ui/LivesContainers.png" id="2_hjma3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p5pks"]
+atlas = ExtResource("2_hjma3")
+region = Rect2(17, 0, 17, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1agyt"]
+atlas = ExtResource("2_hjma3")
+>>>>>>>> main:Game Files/scenes/ui/Battle_UI.tscn
 region = Rect2(0, 0, 17, 18)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3kkeu"]
@@ -27,7 +39,11 @@ animations = [{
 }]
 
 [node name="BattleUi" type="Node" unique_id=744384407]
+<<<<<<<< HEAD:Game Files/scenes/ui/Battle_UI_save.tscn
 script = ExtResource("1_stps0")
+========
+script = ExtResource("1_cec2i")
+>>>>>>>> main:Game Files/scenes/ui/Battle_UI.tscn
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1664851523]
 offset_right = 100.0

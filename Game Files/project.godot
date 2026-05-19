@@ -18,6 +18,21 @@ config/icon="res://icon.svg"
 [autoload]
 
 GlobalVars="*uid://ddw53jlll8hsa"
+SceneManager="*uid://dp7oldpxrvdgc"
+
+[display]
+
+window/stretch/mode="canvas_items"
+
+[file_customization]
+
+folder_colors={
+"res://assets/art/attacks/": "red",
+"res://assets/art/players/blue/": "blue",
+"res://assets/art/players/light_blue/": "teal",
+"res://assets/art/players/orange/": "orange",
+"res://assets/art/players/pink/": "pink"
+}
 
 [display]
 

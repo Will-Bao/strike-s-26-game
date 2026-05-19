@@ -1,34 +1,38 @@
 extends CharacterBody2D
 
 
-@export var SPEED:float = 300.0
-@export var JUMP_VELOCITY:float = -800.0
-@export var strength:float = 100
-@export var tap_jump:bool = false
-@export var double_jump:bool = false
-@export var DOUBLE_VELOCITY:float = -800.0
-@export var dash_ability:bool = false
-@export var dash_amount:float = 10
-@export var dash_decay:float = 0.1
-@export var player_num:int
-@export var char_num:int
+enum ControlState {ACTIVE, STUNNED, RESPAWNING}
+
+@export var all_stats: Array[PlayerStats]
+@export var SPEED: float = 300.0
+@export var JUMP_VELOCITY: float = -800.0
+@export var strength: float = 100
+@export var tap_jump: bool = false
+@export var double_jump: bool = false
+@export var DOUBLE_VELOCITY: float = -800.0
+@export var dash_ability: bool = false
+@export var dash_amount: float = 10
+@export var dash_decay: float = 0.1
+@export var player_num: int
+@export var char_num: int
 @export var is_computer_player:bool
+
+var stats: PlayerStats
 var player1controls = ["up1", "down1", "left1", "right1", "attack1", "dash1", "jump1"]
 var player2controls = ["up2", "down2", "left2", "right2", "attack2", "dash2", "jump2"]
 var player3controls = ["up3", "down3", "left3", "right3", "attack3", "dash3", "jump3"]
 var player4controls = ["up4", "down4", "left4", "right4", "attack4", "dash4", "jump4"]
 var playerCcontrols = ["upC", "downC", "leftC", "rightC", "attackC", "dashC", "jumpC"]
 var controls
-var isAttacking:bool
-var state
+var is_attacking: bool
+var state: String
 var speed = 100
 var knockback = Vector2.ZERO
-var inHitbox:Array[CharacterBody2D]
-var damage = 0
-var gravity_active:bool
-enum control_state {ACTIVE, STUNNED, RESPAWNING}
-var current_state = control_state.ACTIVE
-var spawnPoints:Array[Vector2]
+var in_hitbox: Array[CharacterBody2D]
+var damage: int = 0
+var gravity_active: bool = true
+var current_state = ControlState.ACTIVE
+var spawn_points: Array[Vector2]
 var double_jump_ready:bool = false
 var dash_value = 0
 var players = []
@@ -39,9 +43,9 @@ func _ready():
 	var spawnPointNodes = get_tree().get_nodes_in_group("Spawn Points")
 	var players = get_tree().get_nodes_in_group("Players")
 	for point in spawnPointNodes:
-		spawnPoints.append(point.position)
+		spawn_points.append(point.position)
 	$AttackArea/AttackRect.visible = false
-	isAttacking = false
+	is_attacking = false
 	if player_num == 1:
 		controls = GlobalVars.player1controls
 		char_num = GlobalVars.player_chars[0]
@@ -70,22 +74,21 @@ func _physics_process(delta):
 		velocity += get_gravity() * delta
 	
 	# Handle jump.
-	if ((Input.is_action_just_pressed(controls[0]) and tap_jump) or Input.is_action_just_pressed(controls[6])) and is_on_floor() and current_state == control_state.ACTIVE:
+	if ((Input.is_action_just_pressed(controls[0]) and tap_jump) or Input.is_action_just_pressed(controls[6])) and is_on_floor() and current_state == ControlState.ACTIVE:
 		velocity.y = JUMP_VELOCITY
-	if ((Input.is_action_just_pressed(controls[0]) and tap_jump) or Input.is_action_just_pressed(controls[6])) and double_jump and double_jump_ready and !is_on_floor() and current_state == control_state.ACTIVE:
+	if ((Input.is_action_just_pressed(controls[0]) and tap_jump) or Input.is_action_just_pressed(controls[6])) and double_jump and double_jump_ready and !is_on_floor() and current_state == ControlState.ACTIVE:
 		velocity.y = DOUBLE_VELOCITY
 		double_jump_ready = false
-	if is_on_floor() and !double_jump_ready:
+	if is_on_floor() and not double_jump_ready:
 		double_jump_ready = true
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
 	if dash_value > 0:
 		dash_value -= dash_amount * dash_decay
 	var direction = Input.get_axis(controls[2], controls[3])
-	if direction and current_state == control_state.ACTIVE:
+	if direction and current_state == ControlState.ACTIVE:
 		velocity.x = direction * (SPEED + dash_value)
 		$Sprite.flip_h = (direction == -1)
-		$AttackArea.rotation = int(rad_to_deg(direction == -1)) * PI
+		$AttackArea.scale.x = direction
+		#$AttackArea.rotation = int(rad_to_deg(direction == -1)) * PI
 		state = "walk"
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
@@ -108,17 +111,17 @@ func _physics_process(delta):
 	move_and_slide()
 
 func attack():
-	isAttacking = true
+	is_attacking = true
 	$AttackArea/Sprite2D.visible = true
-	for entity in inHitbox:
+	for entity in in_hitbox:
 		if entity.is_in_group("Players"):
 			give_knockback(entity)
 	await get_tree().create_timer(0.5).timeout
 	$AttackArea/Sprite2D.visible = false
-	isAttacking = false
+	is_attacking = false
 
 func update_animation():
-	if isAttacking:
+	if is_attacking:
 		if $Sprite.animation != "attack":
 			$Sprite.animation = "attack"
 	elif state == "idle" and $Sprite.animation != "idle":
@@ -139,34 +142,34 @@ func give_knockback(entity):
 	var knockback_amount = entity.damage
 	var knockback_to_give = dir * knockback_amount
 	entity.knockback = knockback_to_give
-	entity.current_state = control_state.STUNNED
+	entity.current_state = ControlState.STUNNED
 	entity.get_node("KnockbackCooldown").start()
 
-func _on_attack_area_body_entered(body):
-	if "Player" in body.name:
-		inHitbox.append(body)
+func _on_attack_area_body_entered(body: Node2D):
+	if body.is_in_group("Players"):
+		in_hitbox.append(body)
 
-func _on_attack_area_body_exited(body):
-	if body in inHitbox:
-		inHitbox.erase(body)
+func _on_attack_area_body_exited(body: Node2D):
+	if body in in_hitbox:
+		in_hitbox.erase(body)
 
 func _on_knockback_cooldown_timeout():
-	if current_state == control_state.STUNNED:
-		current_state = control_state.ACTIVE
+	if current_state == ControlState.STUNNED:
+		current_state = ControlState.ACTIVE
 
 func KO():
 	print(name + " KOed")
 	damage = 0
 	get_tree().current_scene.get_node("BattleUi").update_damage(player_num, damage)
 	velocity = Vector2.ZERO
-	current_state = control_state.RESPAWNING
+	current_state = ControlState.RESPAWNING
 	gravity_active = false
 	get_tree().current_scene.updateScore(player_num, recent_attacker)
 	if get_tree().current_scene.is_still_in(player_num) == false and GlobalVars.mode == "stock":
 		queue_free()
 	await get_tree().create_timer(1).timeout
 	state = "respawn"
-	position = spawnPoints[randi_range(0, spawnPoints.size() - 1)]
+	position = spawn_points[randi_range(0, spawn_points.size() - 1)]
 	gravity_active = true
 	await get_tree().create_timer(1).timeout
 	state = "idle"
