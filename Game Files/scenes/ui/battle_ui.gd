@@ -3,7 +3,7 @@ extends Node
 var P1icons = []
 var P2icons = []
 var player_icons = [Control]
-var icon_scene = preload("res://Scenes/Char_UI.tscn")
+var icon_scene = preload("res://scenes/ui/Char_UI.tscn")
 var players_in_game = []
 # Called when the node enters the scene tree for the first time.
 func _ready():

@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-enum ControlState {ACTIVE, STUNNED, RESPAWNING}
+enum control_state {ACTIVE, STUNNED, RESPAWNING}
 
 @export var all_stats: Array[PlayerStats]
 @export var SPEED: float = 300.0
@@ -13,9 +13,9 @@ enum ControlState {ACTIVE, STUNNED, RESPAWNING}
 @export var dash_ability: bool = false
 @export var dash_amount: float = 10
 @export var dash_decay: float = 0.1
-@export var player_num: int
-@export var char_num: int
-@export var is_computer_player:bool
+var player_num: int
+var char_num: int
+var is_computer_player:bool
 
 var stats: PlayerStats
 var player1controls = ["up1", "down1", "left1", "right1", "attack1", "dash1", "jump1"]
@@ -31,7 +31,7 @@ var knockback = Vector2.ZERO
 var in_hitbox: Array[CharacterBody2D]
 var damage: int = 0
 var gravity_active: bool = true
-var current_state = ControlState.ACTIVE
+var current_state = control_state.ACTIVE
 var spawn_points: Array[Vector2]
 var double_jump_ready:bool = false
 var dash_value = 0
@@ -41,7 +41,7 @@ var recent_attacker:int
 
 func _ready():
 	var spawnPointNodes = get_tree().get_nodes_in_group("Spawn Points")
-	var players = get_tree().get_nodes_in_group("Players")
+	#var players = get_tree().get_nodes_in_group("Players")
 	for point in spawnPointNodes:
 		spawn_points.append(point.position)
 	$AttackArea/AttackRect.visible = false
@@ -60,8 +60,8 @@ func _ready():
 		char_num = GlobalVars.player_chars[1]
 	if is_computer_player:
 		controls = playerCcontrols
-	$Sprite.sprite_frames = load("res://Assets/char" + str(char_num) + "sprites.tres")
-	$AttackArea/Sprite2D.texture = load("res://Assets/Attacks/attack" + str(char_num) + ".png")
+	$Sprite.sprite_frames = stats.sprite_frames
+	$AttackArea/Sprite2D.texture = stats.attack_texture
 	current_state = control_state.ACTIVE
 	gravity_active = true
 	canAttack = true
@@ -74,9 +74,9 @@ func _physics_process(delta):
 		velocity += get_gravity() * delta
 	
 	# Handle jump.
-	if ((Input.is_action_just_pressed(controls[0]) and tap_jump) or Input.is_action_just_pressed(controls[6])) and is_on_floor() and current_state == ControlState.ACTIVE:
+	if ((Input.is_action_just_pressed(controls[0]) and tap_jump) or Input.is_action_just_pressed(controls[6])) and is_on_floor() and current_state == control_state.ACTIVE:
 		velocity.y = JUMP_VELOCITY
-	if ((Input.is_action_just_pressed(controls[0]) and tap_jump) or Input.is_action_just_pressed(controls[6])) and double_jump and double_jump_ready and !is_on_floor() and current_state == ControlState.ACTIVE:
+	if ((Input.is_action_just_pressed(controls[0]) and tap_jump) or Input.is_action_just_pressed(controls[6])) and double_jump and double_jump_ready and !is_on_floor() and current_state == control_state.ACTIVE:
 		velocity.y = DOUBLE_VELOCITY
 		double_jump_ready = false
 	if is_on_floor() and not double_jump_ready:
@@ -84,7 +84,7 @@ func _physics_process(delta):
 	if dash_value > 0:
 		dash_value -= dash_amount * dash_decay
 	var direction = Input.get_axis(controls[2], controls[3])
-	if direction and current_state == ControlState.ACTIVE:
+	if direction and current_state == control_state.ACTIVE:
 		velocity.x = direction * (SPEED + dash_value)
 		$Sprite.flip_h = (direction == -1)
 		$AttackArea.scale.x = direction
@@ -142,7 +142,7 @@ func give_knockback(entity):
 	var knockback_amount = entity.damage
 	var knockback_to_give = dir * knockback_amount
 	entity.knockback = knockback_to_give
-	entity.current_state = ControlState.STUNNED
+	entity.current_state = control_state.STUNNED
 	entity.get_node("KnockbackCooldown").start()
 
 func _on_attack_area_body_entered(body: Node2D):
@@ -154,15 +154,15 @@ func _on_attack_area_body_exited(body: Node2D):
 		in_hitbox.erase(body)
 
 func _on_knockback_cooldown_timeout():
-	if current_state == ControlState.STUNNED:
-		current_state = ControlState.ACTIVE
+	if current_state == control_state.STUNNED:
+		current_state = control_state.ACTIVE
 
 func KO():
 	print(name + " KOed")
 	damage = 0
 	get_tree().current_scene.get_node("BattleUi").update_damage(player_num, damage)
 	velocity = Vector2.ZERO
-	current_state = ControlState.RESPAWNING
+	current_state = control_state.RESPAWNING
 	gravity_active = false
 	get_tree().current_scene.updateScore(player_num, recent_attacker)
 	if get_tree().current_scene.is_still_in(player_num) == false and GlobalVars.mode == "stock":

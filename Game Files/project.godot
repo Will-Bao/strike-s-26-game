@@ -22,7 +22,7 @@ SceneManager="*uid://dp7oldpxrvdgc"
 
 [display]
 
-window/stretch/mode="canvas_items"
+window/stretch/mode="viewport"
 
 [file_customization]
 
@@ -33,10 +33,6 @@ folder_colors={
 "res://assets/art/players/orange/": "orange",
 "res://assets/art/players/pink/": "pink"
 }
-
-[display]
-
-window/stretch/mode="viewport"
 
 [global_group]
 

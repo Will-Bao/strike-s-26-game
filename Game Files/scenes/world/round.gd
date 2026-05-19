@@ -4,7 +4,8 @@ var player_scores = [0, 0, 0, 0]
 var player1score:int
 var player2score:int
 var gameMode
-const player_scene = preload("res://Scenes/player.tscn")
+const player_scene = preload("res://scenes/player/player.tscn")
+var stat_list = ["res://data/char0stats.tres", "res://data/char1stats.tres", "res://data/char2stats.tres", "res://data/char3stats.tres"]
 
 func _ready():
 	gameMode = GlobalVars.mode
@@ -20,6 +21,8 @@ func _ready():
 			player.player_num = i + 1
 			player.name = "Player " + str(i + 1)
 			player.position = get_node("StartPoint" + str(i + 1)).position
+			print(stat_list[i])
+			player.stats = load(stat_list[i])
 			add_child(player)
 
 func _process(delta):
