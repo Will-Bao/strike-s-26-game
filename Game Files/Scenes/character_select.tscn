@@ -133,21 +133,3 @@ texture = ExtResource("12_6y5mt")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1288227990]
 scale = Vector2(2, 2)
 texture = ExtResource("13_y3dkq")
-
-[node name="Label" type="Label" parent="." unique_id=1136362541]
-visible = false
-offset_left = 159.0
-offset_top = 425.0
-offset_right = 332.0
-offset_bottom = 494.0
-theme_override_font_sizes/font_size = 50
-text = "READY!"
-
-[node name="Label2" type="Label" parent="." unique_id=819406500]
-visible = false
-offset_left = 830.0
-offset_top = 419.0
-offset_right = 1003.0
-offset_bottom = 488.0
-theme_override_font_sizes/font_size = 50
-text = "READY!"

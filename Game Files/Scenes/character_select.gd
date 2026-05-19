@@ -19,6 +19,7 @@ var controller4 = ["cup4", "cdown4", "cleft4", "cright4", "cattack4", "cdash4", 
 var charsNum = 4
 
 var select_icon = preload("res://Scenes/select_icon.tscn")
+var select_icons = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -41,36 +42,36 @@ func _input(event):
 			return
 	if event.is_action_pressed(player1controls[5]):
 		p1ready = false
-		$Label.visible = false
+		select_icons[0].get_node("Char_Sprite").get_node("Label").visible = false
 		return
 	if event.is_action_pressed(player2controls[5]):
 		p2ready = false
-		$Label2.visible = false
+		select_icons[1].get_node("Char_Sprite").get_node("Label").visible = false
 		return
 	if event.is_action_pressed(player1controls[4]):
 		p1ready = true
-		$Label.visible = true
+		select_icons[0].get_node("Char_Sprite").get_node("Label").visible = true
 		return
 	if event.is_action_pressed(player2controls[4]):
 		p2ready = true
-		$Label2.visible = true
+		select_icons[1].get_node("Char_Sprite").get_node("Label").visible = true
 		return
 	
 	if event.is_action_pressed(player3controls[5]):
 		p3ready = false
-		$Label.visible = false
+		select_icons[2].get_node("Char_Sprite").get_node("Label").visible = false
 		return
 	if event.is_action_pressed(player4controls[5]):
 		p4ready = false
-		$Label2.visible = false
+		select_icons[3].get_node("Char_Sprite").get_node("Label").visible = false
 		return
 	if event.is_action_pressed(player3controls[4]):
 		p3ready = true
-		$Label.visible = true
+		select_icons[2].get_node("Char_Sprite").get_node("Label").visible = true
 		return
 	if event.is_action_pressed(player4controls[4]):
 		p4ready = true
-		$Label2.visible = true
+		select_icons[3].get_node("Char_Sprite").get_node("Label").visible = true
 		return
 	
 	
@@ -150,6 +151,7 @@ func init_player(player:int):
 	var icon = select_icon.instantiate()
 	icon.get_node("Char_Sprite").char_num = player
 	icon.name = "Char_" + str(player) + "_Sprite"
+	select_icons.append(icon)
 	$Chars_container.add_child(icon)
 
 func check_controllers(event):

@@ -10,7 +10,7 @@ func _ready():
 	for i in GlobalVars.active_players.size():
 		if not GlobalVars.active_players[i] == 0:
 			players_in_game.append(i)
-	print(players_in_game)
+	#print(players_in_game)
 	if GlobalVars.mode == "stock":
 		$TimeLeft.visible = false
 	else:

@@ -7,7 +7,7 @@ func _ready():
 	var non_winners:Array[int] = []
 	for i in GlobalVars.active_players.size():
 		non_winners.append(GlobalVars.active_players[i] * GlobalVars.player_chars[i])
-	print(non_winners)
+	#print(non_winners)
 	other_sprites = [$Other, $Other2, $Other3]
 	$Winner.frame = GlobalVars.player_chars[GlobalVars.winner - 1]
 	non_winners.remove_at(GlobalVars.winner - 1)
