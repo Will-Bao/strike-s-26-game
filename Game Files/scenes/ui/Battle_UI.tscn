@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://2w2juye8e4ue"]
+
+[ext_resource type="Script" uid="uid://c8a8t4ii8gyvi" path="res://scenes/ui/battle_ui.gd" id="1_1agyt"]
+
+[node name="BattleUi" type="Node" unique_id=744384407]
+script = ExtResource("1_1agyt")
+
+[node name="Label" type="Label" parent="." unique_id=1037615092]
+visible = false
+offset_left = 402.0
+offset_top = 226.0
+offset_right = 689.0
+offset_bottom = 363.0
+theme_override_font_sizes/font_size = 100
+text = "GAME"
+
+[node name="TimeLeft" type="Label" parent="." unique_id=61926365]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -50.0
+offset_right = 50.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "Time Left: 60"
+
+[node name="Player_Icons" type="HBoxContainer" parent="." unique_id=1245756549]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 300

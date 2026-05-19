@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://b72bvvag2rsl8"]
+
+[ext_resource type="Script" uid="uid://bh2n7x3b8ud4s" path="res://scenes/player/player.gd" id="1_ieq6i"]
+[ext_resource type="SpriteFrames" uid="uid://crd4l11djm4j4" path="res://data/sprites/char4sprites.tres" id="2_2df61"]
+[ext_resource type="Texture2D" uid="uid://dbtmjv8tblwlp" path="res://assets/art/players/pink/playerpink_attack.png" id="3_54nqe"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_onrkg"]
+radius = 61.0
+height = 128.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
+size = Vector2(110, 124)
+
+[node name="Player" type="CharacterBody2D" unique_id=1407989866 groups=["Players"]]
+script = ExtResource("1_ieq6i")
+JUMP_VELOCITY = -600.0
+DOUBLE_VELOCITY = -600.0
+dash_ability = true
+dash_amount = 1000.0
+dash_decay = 0.05
+player_num = 1
+char_num = 1
+
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1892283112]
+scale = Vector2(4, 4)
+sprite_frames = ExtResource("2_2df61")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=695367149]
+shape = SubResource("CapsuleShape2D_onrkg")
+
+[node name="AttackArea" type="Area2D" parent="." unique_id=1777520993]
+
+[node name="AttackRect" type="ColorRect" parent="AttackArea" unique_id=200257127]
+visible = false
+offset_left = 64.0
+offset_top = -62.0
+offset_right = 174.0
+offset_bottom = 62.0
+color = Color(1, 0, 0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="AttackArea" unique_id=725891444]
+visible = false
+position = Vector2(128, 0)
+scale = Vector2(4, 4)
+texture = ExtResource("3_54nqe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" unique_id=899559279]
+position = Vector2(119, 0)
+shape = SubResource("RectangleShape2D_onrkg")
+
+[node name="KnockbackCooldown" type="Timer" parent="." unique_id=1305578025]
+wait_time = 0.75
+one_shot = true
+
+[node name="AttackCooldown" type="Timer" parent="." unique_id=1645819466]
+one_shot = true
+
+[connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]
+[connection signal="body_exited" from="AttackArea" to="." method="_on_attack_area_body_exited"]
+[connection signal="timeout" from="KnockbackCooldown" to="." method="_on_knockback_cooldown_timeout"]
+[connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_cooldown_timeout"]
