@@ -1,55 +1,53 @@
 extends Node2D
 
+var player_scores = [0, 0, 0, 0]
 var player1score:int
 var player2score:int
 var gameMode
+const player_scene = preload("res://scenes/player/player.tscn")
+var stat_list = ["res://data/char0stats.tres", "res://data/char1stats.tres", "res://data/char2stats.tres", "res://data/char3stats.tres"]
 
 func _ready():
 	gameMode = GlobalVars.mode
 	if gameMode == "stock":
-		player1score = 3
-		player2score = 3
-		$BattleUi.stock_setup()
+		player_scores.fill(3)
 	else:
-		player1score = 0
-		player2score = 0
-		$BattleUi.time_setup()
+		player_scores.fill(0)
+	for i in player_scores.size():
+		player_scores[i] *= GlobalVars.active_players[i]
+	for i in range(4):
+		if GlobalVars.active_players[i] > 0:
+			var player = player_scene.instantiate()
+			player.player_num = i + 1
+			player.name = "Player " + str(i + 1)
+			player.position = get_node("StartPoint" + str(i + 1)).position
+			print(stat_list[i])
+			player.stats = load(stat_list[i])
+			add_child(player)
 
-func _process(_delta):
-	if gameMode == "time":
+func _process(delta):
+	if(gameMode == "time"):
 		$BattleUi/TimeLeft.text = "Time Left: " + str(int(round($TimeLeft.time_left)))
 		$TimeLeft.start()
 
-func updateScore(player:int, points = 1):
-	if gameMode == "stock":
+func updateScore(player:int, attacker:int, points = 1):
+	if(gameMode == "stock"):
 		#print("Player" + str(player) + " stock decreased by " + str(points))
-		if player == 1:
-			player1score -= points
-		elif player == 2:
-			player2score -= points
-		if(player == 1 and player1score == 0):
-			gameEnd(2)
-		elif(player == 2 and player2score == 0):
-			gameEnd(1)
-		$BattleUi.update_stock(player1score, player2score)
+		player_scores[player - 1] -= 1
+		var still_in:int = 0
+		for i in player_scores:
+			if i > 0:
+				still_in += 1
+		if still_in == 1:
+			gameEnd(greatest_score())
+		$BattleUi.update_stock(player, player_scores[player - 1])
 	elif(gameMode == "time"):
-		#print("Player" + str(player) + " stock decreased by " + str(points))
-		if player == 1:
-			player2score += points
-		elif player == 2:
-			player1score += points
-		$BattleUi.update_score(player1score, player2score)
+		player_scores[attacker] += 1
+		$BattleUi.update_score(player, player_scores[player - 1])
 
 
 func gameEnd(winner):
-	if(winner == 1):
-		#$Player2.queue_free()
-		GlobalVars.winner = 1
-	elif(winner == 2):
-		#$Player.queue_free()
-		GlobalVars.winner = 2
-	else:
-		GlobalVars.winner = 0
+	GlobalVars.winner = winner
 	Engine.set_time_scale(0.25)
 	await get_tree().create_timer(0.3).timeout
 	$BattleUi/Label.visible = true
@@ -60,9 +58,24 @@ func gameEnd(winner):
 
 
 func _on_time_left_timeout():
-	if(player1score > player2score):
-		gameEnd(1)
-	elif(player1score < player2score):
-		gameEnd(2)
-	else:
-		gameEnd(0)
+	gameEnd(greatest_score())
+	
+func is_still_in(player):
+	if player_scores[player - 1] > 0:
+		return true
+	return false
+
+func greatest_score():
+	var g = 0
+	var tie:bool = false
+	for i in range(4):
+		if player_scores[i] == player_scores[g]:
+			tie = true
+		if player_scores[i] > player_scores[g]:
+			g = i
+			tie = false
+	return g + 1
+
+
+func _on_audio_stream_player_2d_finished():
+	$AudioStreamPlayer2D.play()
