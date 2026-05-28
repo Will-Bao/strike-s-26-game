@@ -38,7 +38,7 @@ func _ready():
 func _input(event):
 	check_controllers(event)
 	check_players(event)
-	if event.is_action_pressed("ui_accept"):
+	if event.is_action_pressed("start_button"):
 		if((p1ready or not GlobalVars.active_players[0]) and (p2ready or not GlobalVars.active_players[1]) and (p3ready or not GlobalVars.active_players[2]) and (p4ready or not GlobalVars.active_players[3])):
 			GlobalVars.player_chars[0] = p1Char
 			GlobalVars.player_chars[1] = p2Char

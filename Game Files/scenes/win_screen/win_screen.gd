@@ -18,6 +18,9 @@ func _ready():
 			other_sprites[i].visible = true
 			other_sprites[i].frame = non_winners[i]
 
+func _input(event):
+	if event.is_action_pressed("start_button"):
+		SceneManager.change_scene("character_select")
 
 func _on_button_pressed():
 	SceneManager.change_scene("character_select")
